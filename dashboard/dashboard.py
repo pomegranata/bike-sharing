@@ -214,7 +214,7 @@ tab1, tab2 = lit.tabs(["Bulanan", 'Tahunan'])
 
 # Bulanan
 with tab1:
-    fig1, ax1 = plot.subplots(figsize=(10, 5))
+    fig1, ax1 = plot.subplots(figsize=(12, 5))
     ulpipi.lineplot(
         x='mnth',
         y='cnt',

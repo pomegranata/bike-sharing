@@ -184,8 +184,8 @@ with tabcas:
 
     with lit.expander("Lihat Penjelasan"):
         lit.write(
-            """Plot transaksi penyewaan sepeda pada penyewa kasual 
-            berdasarkan dimulai dari Januari, 2011 hingga Desember 2012"""
+            """Plot transaksi penyewaan sepeda pada penyewa kasual
+              dimulai dari Januari, 2011 hingga Desember 2012"""
         )
 
 # Registered
@@ -205,7 +205,7 @@ with tabreg:
     with lit.expander("Lihat Penjelasan"):
         lit.write(
             """Plot transaksi penyewaan sepeda pada penyewa terdaftar 
-            berdasarkan dimulai dari Januari, 2011 hingga Desember 2012"""
+            dimulai dari Januari 2011 hingga Desember 2012"""
         )
 
 # Informasi tiap bulanan dan tahunan
@@ -214,7 +214,7 @@ tab1, tab2 = lit.tabs(["Bulanan", 'Tahunan'])
 
 # Bulanan
 with tab1:
-    fig1, ax1 = plot.subplots(figsize=(10, 5))
+    fig1, ax1 = plot.subplots(figsize=(18, 6))
     ulpipi.lineplot(
         x='mnth',
         y='cnt',
@@ -356,5 +356,5 @@ with seatab:
 
     with lit.expander("Lihat Penjelasan"):
         lit.write(
-            """Total jumlah transaksi penyewaan sepeda pberdasarkan cuaca."""
+            """Total jumlah transaksi penyewaan sepeda pberdasarkan musim."""
         )

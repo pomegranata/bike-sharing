@@ -214,7 +214,7 @@ tab1, tab2 = lit.tabs(["Bulanan", 'Tahunan'])
 
 # Bulanan
 with tab1:
-    fig1, ax1 = plot.subplots(figsize=(18, 6))
+    fig1, ax1 = plot.subplots(figsize=(16, 8))
     ulpipi.lineplot(
         x='mnth',
         y='cnt',
@@ -356,5 +356,5 @@ with seatab:
 
     with lit.expander("Lihat Penjelasan"):
         lit.write(
-            """Total jumlah transaksi penyewaan sepeda pberdasarkan musim."""
+            """Total jumlah transaksi penyewaan sepeda berdasarkan musim."""
         )

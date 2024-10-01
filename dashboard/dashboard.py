@@ -92,7 +92,7 @@ def holiday_rent_data(df):
     
 
 # Load dataset
-data_hari = pd.read_csv('dashboard/fixed_dataset.csv')
+data_hari = pd.read_csv('fixed_dataset.csv')
 data_hari["dteday"] = pd.to_datetime(data_hari["dteday"])
 
 # Filter tanggal
@@ -100,7 +100,7 @@ min_date = data_hari["dteday"].min().date()
 max_date = data_hari["dteday"].max().date()
 
 with lit.sidebar:
-    lit.image('dashboard/icon.jpg')
+    lit.image('icon.jpg')
 
     start_date, end_date = lit.date_input(
         label='Rentang Waktu',min_value=min_date,
@@ -358,3 +358,55 @@ with seatab:
         lit.write(
             """Total jumlah transaksi penyewaan sepeda berdasarkan musim."""
         )
+
+# Bagaimana pengaruh hari libur / holiday pada tiap musim berpengaruh pada penyewaan sepeda?
+
+lit.subheader("Bagaimana pengaruh hari libur / holiday pada tiap musim berpengaruh pada penyewaan sepeda?")
+figper4, ax4 = plot.subplots(figsize=(10, 5))
+ulpipi.boxplot(
+    x='season',
+    y='cnt',
+    hue='holiday',
+    data=main_df,
+    ax=ax4,
+    palette='Set1'
+)
+
+ax4.set_title('Pengaruh Hari Libur / Holiday')
+ax4.set_xlabel('Musim')
+ax4.set_ylabel('Jumlah Penyewaan Sepeda')
+lit.pyplot(figper4)
+
+with lit.expander("Lihat Penjelasan"):
+    lit.write(
+        """Tingkat penyewaan sepeda pada hari libur menunjukkan fluktuasi yang signifikan antar musim. 
+        Musim gugur mencatat peningkatan yang paling menonjol, sementara musim semi mengalami penurunan paling drastis. 
+        Sebaliknya, musim panas dan dingin cenderung memiliki tingkat penyewaan yang lebih stabil, 
+        baik pada hari libur maupun hari biasa. Secara keseluruhan, variabilitas penyewaan cenderung lebih rendah pada hari libur 
+        di semua musim."""
+    )
+
+# Apakah terdapat peningkatan penyewaan sepeda di musim panas saat weekend dibandingkan musim dingin selama hari kerja?
+
+lit.subheader("Apakah terdapat peningkatan penyewaan sepeda di musim panas saat weekend dibandingkan musim dingin selama hari kerja?")
+figper5, ax5 = plot.subplots(figsize=(10, 5))
+ulpipi.scatterplot(
+    x='season',
+    y='cnt',
+    hue='workingday',
+    data=main_df,
+    ax=ax5,
+    palette='coolwarm'
+)
+
+ax5.set_title('Jumlah Penyewaan Sepeda di Musim Panas vs Musim Dingin (Hari Kerja vs Akhir Pekan)')
+ax5.set_xlabel('Musim')
+ax5.set_ylabel('Jumlah Penyewaan Sepeda')
+lit.pyplot(figper5)
+
+with lit.expander("Lihat Penjelasan"):
+    lit.write(
+        """Data scatter plot menunjukkan bahwa kombinasi antara musim panas dan akhir pekan mendorong peningkatan permintaan 
+        terhadap layanan penyewaan sepeda. Terlihat bahwa penyewaan sepeda pada musim panas saat weekend memiliki nilai yang 
+        lebih besar daripada saat musim dingin pada hari kerja."""
+    )

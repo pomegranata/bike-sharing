@@ -92,7 +92,7 @@ def holiday_rent_data(df):
     
 
 # Load dataset
-data_hari = pd.read_csv('fixed_dataset.csv')
+data_hari = pd.read_csv('dashboard/fixed_dataset.csv')
 data_hari["dteday"] = pd.to_datetime(data_hari["dteday"])
 
 # Filter tanggal
@@ -100,7 +100,7 @@ min_date = data_hari["dteday"].min().date()
 max_date = data_hari["dteday"].max().date()
 
 with lit.sidebar:
-    lit.image('icon.jpg')
+    lit.image('dashboard/icon.jpg')
 
     start_date, end_date = lit.date_input(
         label='Rentang Waktu',min_value=min_date,
